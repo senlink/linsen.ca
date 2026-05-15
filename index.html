@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LINSEN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@300;400&family=DM+Mono:wght@300;400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f4f0;
+      --gray-1: #e8e6e0;
+      --gray-2: #b0ada6;
+      --gray-3: #6b6860;
+      --gray-4: #2a2926;
+      --border: rgba(0,0,0,0.10);
+      --serif: 'EB Garamond', Georgia, serif;
+      --serif-light: 'Cormorant Garamond', Georgia, serif;
+      --serif-cn: 'Noto Serif SC', 'Songti SC', STSong, serif;
+      --mono: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 4rem;
+      background: transparent;
+      border-bottom: 0.5px solid transparent;
+      transition: background 0.5s ease, border-color 0.5s ease;
+    }
+
+    nav.scrolled {
+      background: var(--white);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-name {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+
+    .nav-links { display: flex; gap: 3rem; list-style: none; }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-3);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    /* ── HERO — full bleed painting ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('painting-hero.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: 10rem 4rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .hero-kanji {
+      font-family: var(--serif-cn);
+      font-size: 120px;
+      font-weight: 300;
+      color: rgba(10,10,10,0.10);
+      line-height: 1;
+    }
+
+    .hero-statement {
+      font-family: var(--serif);
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--black);
+      letter-spacing: -0.01em;
+      padding-top: 1rem;
+    }
+
+    .subdued {
+      color: var(--gray-3);
+      font-style: normal;
+    }
+
+    .hero-tagline {
+      font-family: var(--serif);
+      font-size: 13px;
+      
+      color: var(--gray-3);
+      letter-spacing: 0.05em;
+      margin-top: 2rem;
+    }
+
+    .hero-location {
+      position: absolute;
+      bottom: 3rem;
+      left: 4rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--gray-3);
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION BASE ── */
+    section { border-bottom: 0.5px solid var(--border); }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 4rem;
+      padding: 4rem;
+      border-bottom: 0.5px solid var(--border);
+      align-items: start;
+    }
+
+    .section-meta { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .section-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--gray-2);
+    }
+
+    .section-kanji {
+      font-family: var(--serif-cn);
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--gray-2);
+      line-height: 1;
+    }
+
+    .section-title {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-3);
+    }
+
+    .section-desc {
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--gray-3);
+      max-width: 480px;
+      
+      padding-top: 0.5rem;
+    }
+
+    /* ── PAINTING ── */
+    .work-featured {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      background: var(--gray-1);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem 4rem;
+    }
+
+    .work-featured img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+    }
+
+    .work-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--gray-3);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .works-grid { display: grid; grid-template-columns: 1fr 1fr; }
+
+    .work-item {
+      aspect-ratio: 4 / 3;
+      background: var(--gray-1);
+      overflow: hidden;
+      position: relative;
+      border-right: 0.5px solid var(--border);
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem 2rem;
+    }
+
+    .work-item:nth-child(even) { border-right: none; }
+
+    .work-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+      transition: transform 0.6s ease;
+    }
+
+    .work-item:hover img { transform: scale(1.02); }
+
+    .work-item-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--gray-3);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .shade-a { background: #dedad4; }
+    .shade-b { background: #ccc9c2; }
+    .shade-c { background: #e4e1db; }
+    .shade-d { background: #d4d1ca; }
+
+    /* ── DESIGN ── */
+    .design-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 0.5px solid var(--border);
+    }
+
+    .design-item {
+      aspect-ratio: 4 / 3;
+      background: var(--gray-1);
+      border-right: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem 2rem;
+    }
+
+    .design-item:nth-child(even) { border-right: none; }
+    .design-item:nth-child(3),
+    .design-item:nth-child(4) { border-bottom: none; }
+
+    .design-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0; left: 0;
+      transition: transform 0.6s ease;
+    }
+
+    .design-item:hover img { transform: scale(1.02); }
+
+    .design-item-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--gray-3);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── PHILOSOPHY — magazine layout ── */
+    .philosophy-body {
+      padding: 5rem 4rem 6rem;
+    }
+
+    .phil-text {
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--gray-3);
+      
+    }
+
+    /* shinai: text left, image right */
+    .phil-row-right {
+      display: grid;
+      grid-template-columns: 1fr 40%;
+      gap: 6rem;
+      align-items: center;
+      margin: 5rem 0;
+    }
+
+    /* midi: image left, text right */
+    .phil-row-left {
+      display: grid;
+      grid-template-columns: 38% 1fr;
+      gap: 6rem;
+      align-items: center;
+      margin: 5rem 0;
+    }
+
+    .phil-img { position: relative; }
+
+    .phil-img img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%);
+    }
+
+    .phil-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: var(--gray-1);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem 1.25rem;
+    }
+
+    .phil-img-caption {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--gray-2);
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    /* pillars */
+    .philosophy-pillars {
+      margin-top: 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      border-top: 0.5px solid var(--border);
+      padding-top: 3rem;
+      max-width: 700px;
+    }
+
+    .pillar {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2rem;
+      align-items: baseline;
+    }
+
+    .pillar-name {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-2);
+    }
+
+    .pillar-desc {
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--gray-3);
+      
+    }
+
+    .philosophy-quote {
+      font-family: var(--serif-cn);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--gray-2);
+      letter-spacing: 0.12em;
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 0.5px solid var(--border);
+      max-width: 700px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer span {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--gray-2);
+      text-transform: uppercase;
+    }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-name">LINSEN</div>
+    <ul class="nav-links">
+      <li><a href="#painting">Painting</a></li>
+      <li><a href="#design">Design</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-kanji">間</div>
+      <div>
+        <p class="hero-statement">Oil on canvas.<br>Form in space.<br><span class="subdued">The rest is noise.</span></p>
+        <p class="hero-tagline">Form follows silence.</p>
+      </div>
+    </div>
+    <div class="hero-location">Calgary, Canada</div>
+  </div>
+
+  <!-- PAINTING -->
+  <section id="painting">
+    <div class="section-header fade-in">
+      <div class="section-meta">
+        <span class="section-num">01</span>
+        <span class="section-kanji">油畫</span>
+        <span class="section-title">Oil Painting</span>
+      </div>
+      <p class="section-desc">Each canvas begins with removal. What remains is not a decision but a survival — the last image that refused to be erased.</p>
+    </div>
+
+    <div class="work-featured shade-a fade-in">
+      <!-- <img src="images/painting-featured.jpg" alt="Featured painting"> -->
+      <span class="work-label">Featured work</span>
+    </div>
+
+    <div class="works-grid">
+      <div class="work-item shade-b fade-in">
+        <!-- <img src="images/painting-01.jpg" alt=""> -->
+        <span class="work-item-label">Untitled I</span>
+      </div>
+      <div class="work-item shade-c fade-in">
+        <!-- <img src="images/painting-02.jpg" alt=""> -->
+        <span class="work-item-label">Untitled II</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN -->
+  <section id="design">
+    <div class="section-header fade-in">
+      <div class="section-meta">
+        <span class="section-num">02</span>
+        <span class="section-kanji">平面</span>
+        <span class="section-title">Graphic Design</span>
+      </div>
+      <p class="section-desc">Reduction until only intent remains. Every element earns its place — or it does not exist.</p>
+    </div>
+
+    <div class="design-grid">
+      <div class="design-item shade-b fade-in">
+        <!-- <img src="images/design-01.jpg" alt=""> -->
+        <span class="design-item-label">Identity</span>
+      </div>
+      <div class="design-item shade-a fade-in">
+        <!-- <img src="images/design-02.jpg" alt=""> -->
+        <span class="design-item-label">Packaging</span>
+      </div>
+      <div class="design-item shade-c fade-in">
+        <!-- <img src="images/design-03.jpg" alt=""> -->
+        <span class="design-item-label">Print</span>
+      </div>
+      <div class="design-item shade-d fade-in">
+        <!-- <img src="images/design-04.jpg" alt=""> -->
+        <span class="design-item-label">Type</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section id="philosophy">
+    <div class="section-header fade-in">
+      <div class="section-meta">
+        <span class="section-num">03</span>
+        <span class="section-kanji">理念</span>
+        <span class="section-title">Philosophy</span>
+      </div>
+      <p class="section-desc">What I make is shaped by what I practice. Discipline is not a constraint — it is the only path to freedom.</p>
+    </div>
+
+    <div class="philosophy-body">
+
+      <!-- opening paragraph -->
+      <p class="phil-text fade-in" style="max-width: 600px;">
+        I make things that try to hold silence without explaining it. The work is not minimalism as style — it is minimalism as discipline. A practice of not-adding, not-saying, not-filling.
+      </p>
+
+      <!-- shinai — text left, image right -->
+      <div class="phil-row-right fade-in">
+        <p class="phil-text">
+          Influenced by Zen aesthetics, wabi-sabi, and the Japanese concept of 間 (ma) — the meaningful pause between things. The space between the sword strokes. The silence between the notes.
+        </p>
+        <div class="phil-img">
+          <img src="shinai.jpg" alt="Shinai — 竹刀">
+          <p class="phil-img-caption">Shinai &nbsp;·&nbsp; 竹刀</p>
+        </div>
+      </div>
+
+      <!-- midi — image left, text right -->
+      <div class="phil-row-left fade-in">
+        <div class="phil-img">
+          <!-- Replace with: <img src="images/midi.jpg" alt="MIDI"> -->
+          <div class="phil-img-placeholder shade-b">
+            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.15em;color:var(--gray-3);text-transform:uppercase;">Image coming</span>
+          </div>
+          <p class="phil-img-caption">MIDI &nbsp;·&nbsp; 電子音樂</p>
+        </div>
+        <p class="phil-text">
+          Industrial and ambient — sound as architecture. Texture without decoration, weight without excess. Music as a practice of restraint, not expression.
+        </p>
+      </div>
+
+      <!-- pillars -->
+      <div class="philosophy-pillars fade-in">
+        <div class="pillar">
+          <span class="pillar-name">Kendo</span>
+          <span class="pillar-desc">The body learns what the mind cannot. Presence through form, intention through stillness.</span>
+        </div>
+        <div class="pillar">
+          <span class="pillar-name">Music</span>
+          <span class="pillar-desc">Industrial and ambient — sound as architecture. Texture without decoration, weight without excess.</span>
+        </div>
+        <div class="pillar">
+          <span class="pillar-name">Painting</span>
+          <span class="pillar-desc">Each mark a decision. Each erasure a commitment. The canvas does not forgive.</span>
+        </div>
+        <div class="pillar">
+          <span class="pillar-name">Design</span>
+          <span class="pillar-desc">If it needs explaining, it has already failed. Clarity is the only luxury.</span>
+        </div>
+      </div>
+
+      <div class="philosophy-quote fade-in">氣韻生動</div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>linsen.ca</span>
+    <span>Calgary, Canada</span>
+    <span>© 2026</span>
+  </footer>
+
+  <script>
+    // Nav transparent over hero, solid after scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > window.innerHeight - 80);
+    });
+
+    // Fade in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
