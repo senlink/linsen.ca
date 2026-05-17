@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="canonical" href="https://linsen.ca">
   
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@300;400&family=DM+Mono:wght@300;400&family=Noto+Serif+SC:wght@300;400family=DM+Mono:wght@300;400family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@300;400&family=DM+Mono:wght@300;400&family=Noto+Serif+SC:wght@300;400family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Cormorant+Garamond:wght@300;400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -29,9 +29,8 @@
       --border: rgba(0,0,0,0.10);
       --serif: 'EB Garamond', Georgia, serif;
       --serif-light: 'Cormorant Garamond', Georgia, serif;
-      --serif-cn: 'Noto Serif SC', 'Songti SC', STSong, serif;
+      --serif-cn: 'Songti SC', 'STSong', 'SimSun', serif;
       --mono: 'DM Mono', monospace;
-      --serif-cn: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -76,7 +75,7 @@
 
     .nav-links a {
       font-family: var(--mono);
-      font-size: 14px;
+      font-size: 12px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gray-3);
@@ -448,6 +447,123 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1.25rem 1.5rem;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .nav-name {
+        font-size: 12px;
+        letter-spacing: 0.25em;
+      }
+
+      .nav-links {
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+        letter-spacing: 0.15em;
+      }
+
+      .hero-content {
+        padding: 6rem 1.5rem 0;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .hero-kanji {
+        font-size: 64px;
+      }
+
+      .hero-statement {
+        font-size: 17px;
+        line-height: 1.5;
+      }
+
+      .hero-tagline {
+        font-size: 11px;
+        margin-top: 1rem;
+      }
+
+      .hero-location {
+        left: 1.5rem;
+        bottom: 2rem;
+        font-size: 9px;
+      }
+
+      .section-header {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .section-desc {
+        max-width: 100%;
+      }
+
+      .work-featured {
+        padding: 1.5rem;
+      }
+
+      .works-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-item {
+        border-right: none;
+      }
+
+      .design-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .design-item {
+        aspect-ratio: 4 / 3;
+      }
+
+      .design-item:nth-child(odd) { border-right: 0.5px solid var(--border); }
+      .design-item:nth-child(even) { border-right: none; }
+
+      .philosophy-body {
+        padding: 3rem 1.5rem 4rem;
+      }
+
+      .phil-row-right,
+      .phil-row-left {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 2.5rem 0;
+      }
+
+      .phil-row-right .phil-img { order: -1; }
+
+      .philosophy-pillars {
+        max-width: 100%;
+        margin-top: 3rem;
+      }
+
+      .pillar {
+        grid-template-columns: 90px 1fr;
+        gap: 1.5rem;
+      }
+
+      .philosophy-quote {
+        margin: 3rem -1.5rem 0;
+        padding-left: 1.5rem;
+      }
+
+      footer {
+        padding: 1.5rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+    }
+    
   </style>
 </head>
 <body>
@@ -456,8 +572,8 @@
   <nav id="nav">
     <div class="nav-name">LINSEN</div>
     <ul class="nav-links">
-      <li><a href="#painting">Painting</a></li>
-      <li><a href="#design">Design</a></li>
+      <li><a href="#painting">ARTS</a></li>
+      <li><a href="#design">DESIGN</a></li>
       <li><a href="#philosophy">Philosophy</a></li>
     </ul>
   </nav>
@@ -488,25 +604,25 @@
 
     <div class="work-featured shade-a fade-in">
       <img src="work.jpg" alt="Featured painting">
-      <span class="work-label">Featured work</span>
+      <span class="work-label"></span>
     </div>
 
     <div class="works-grid">
       <div class="work-item shade-b fade-in">
         <img src="mastergong_rs.jpg" alt="">
-        <span class="work-item-label">Untitled I</span>
+        <span class="work-item-label">Narrative</span>
       </div>
       <div class="work-item shade-c fade-in">
         <img src="N2_rs.jpg" alt="">
-        <span class="work-item-label">Untitled II</span>
+        <span class="work-item-label">Chromatic</span>
       </div>
       <div class="work-item shade-a fade-in">
         <img src="scarlet_rs.jpg" alt="">
-        <span class="work-item-label">Untitled III</span>
+        <span class="work-item-label">Atmospheric</span>
       </div>
       <div class="work-item shade-d fade-in">
         <img src="A2_rs.jpg" alt="">
-        <span class="work-item-label">Untitled IV</span>
+        <span class="work-item-label">Geometric Acrylic</span>
       </div>
     </div>
   </section>
@@ -516,7 +632,7 @@
     <div class="section-header fade-in">
       <div class="section-meta">
         <span class="section-num">02</span>
-        <span class="section-kanji">平面</span>
+        <span class="section-kanji">视觉</span>
         <span class="section-title">Graphic Design</span>
       </div>
       <p class="section-desc">Reduction until only intent remains. Every element earns its place — or it does not exist.</p>
@@ -529,7 +645,7 @@
       </div>
       <div class="design-item shade-a fade-in">
         <!-- <img src="images/design-02.jpg" alt=""> -->
-        <span class="design-item-label">Packaging</span>
+        <span class="design-item-label">Logo</span>
       </div>
       <div class="design-item shade-c fade-in">
         <!-- <img src="images/design-03.jpg" alt=""> -->
@@ -591,7 +707,7 @@
           <div class="phil-img-placeholder shade-b">
             <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.15em;color:var(--gray-3);text-transform:uppercase;">Image coming</span>
           </div>
-          <p class="phil-img-caption">MIDI &nbsp;·&nbsp; 電子音樂</p>
+          <p class="phil-img-caption">Producing &nbsp;·&nbsp; 音樂</p>
         </div>
         <p class="phil-text">
           Industrial and ambient — sound as architecture. Texture without decoration, weight without excess. Music as a practice of restraint, not expression.
@@ -633,7 +749,7 @@
     <span>Calgary, Canada</span>
     <span><a href="mailto:hello@linsen.ca" style="color:inherit;text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;">hello@linsen.ca</a></span>
     <span><a href="https://www.instagram.com/lnsn/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;">Instagram</a></span>
-    <span>© 2027</span>
+    <span>© 2026</span>
   </footer>
 
   <script>
