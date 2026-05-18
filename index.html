@@ -62,13 +62,24 @@
       background: var(--white);
       border-bottom: 0.5px solid var(--border);
     }
+    nav.scrolled .nav-name {
+    color: var(--black);
+    }
+
+    nav.scrolled .nav-links a {
+    color: var(--gray-3);
+    }
+
+    nav.scrolled .nav-links a:hover {
+    color: var(--black);
+    }
 
     .nav-name {
       font-family: var(--mono);
       font-size: 14px;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--black);
+      color: rgba(255,255,255,0.85);
     }
 
     .nav-links { display: flex; gap: 3rem; list-style: none; }
@@ -78,12 +89,12 @@
       font-size: 12px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gray-3);
+      color: rgba(255,255,255,0.55);
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
-    .nav-links a:hover { color: var(--black); }
+    .nav-links a:hover { color: rgba(255,255,255,1);}
 
     /* ── HERO — full bleed painting ── */
     .hero {
@@ -97,7 +108,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('painting-hero.jpg');
+      background-image: url('hero.jpg');
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
@@ -117,7 +128,7 @@
       font-family: var(--serif-cn);
       font-size: 120px;
       font-weight: 300;
-      color: rgba(10,10,10,0.10);
+      color: rgba(255,255,255,0.25);
       line-height: 1;
     }
 
@@ -126,13 +137,13 @@
       font-size: 34px;
       font-weight: 400;
       line-height: 1.6;
-      color: var(--black);
+      color: rgba(255,255,255,0.92);
       letter-spacing: -0.01em;
       padding-top: 1rem;
     }
 
     .subdued {
-      color: var(--gray-3);
+      color: rgba(255,255,255,0.55);
       font-style: normal;
     }
 
@@ -140,7 +151,7 @@
       font-family: var(--serif);
       font-size: 13px;
       
-      color: var(--gray-3);
+      color: rgba(255,255,255,0.45);
       letter-spacing: 0.05em;
       margin-top: 2rem;
     }
@@ -508,6 +519,7 @@
 
       .work-featured {
         padding: 1.5rem;
+        aspect-ratio: 4 / 3;
       }
 
       .works-grid {
@@ -572,7 +584,7 @@
   <nav id="nav">
     <div class="nav-name">LINSEN</div>
     <ul class="nav-links">
-      <li><a href="#painting">ARTS</a></li>
+      <li><a href="#painting">ART</a></li>
       <li><a href="#design">DESIGN</a></li>
       <li><a href="#philosophy">Philosophy</a></li>
     </ul>
@@ -588,7 +600,7 @@
         <p class="hero-tagline">Form follows silence.</p>
       </div>
     </div>
-    <div class="hero-location">Calgary, Canada</div>
+    <!-- <div class="hero-location">Calgary, Canada</div> -->
   </div>
 
   <!-- PAINTING -->
@@ -596,14 +608,14 @@
     <div class="section-header fade-in">
       <div class="section-meta">
         <span class="section-num">01</span>
-        <span class="section-kanji">油畫</span>
-        <span class="section-title">Oil Painting</span>
+        <span class="section-kanji">色作</span>
+        <span class="section-title">Painting</span>
       </div>
       <p class="section-desc">Each canvas begins with removal. What remains is not a decision but a survival — the last image that refused to be erased.</p>
     </div>
 
     <div class="work-featured shade-a fade-in">
-      <img src="work.jpg" alt="Featured painting">
+      <img src="N1.jpg" alt="Featured painting">
       <span class="work-label"></span>
     </div>
 
@@ -622,7 +634,7 @@
       </div>
       <div class="work-item shade-d fade-in">
         <img src="A2_rs.jpg" alt="">
-        <span class="work-item-label">Geometric Acrylic</span>
+        <span class="work-item-label">Geometric</span>
       </div>
     </div>
   </section>
@@ -633,7 +645,7 @@
       <div class="section-meta">
         <span class="section-num">02</span>
         <span class="section-kanji">视觉</span>
-        <span class="section-title">Graphic Design</span>
+        <span class="section-title">VISUAL DESIGN</span>
       </div>
       <p class="section-desc">Reduction until only intent remains. Every element earns its place — or it does not exist.</p>
     </div>
