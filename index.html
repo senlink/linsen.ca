@@ -531,15 +531,18 @@
       }
 
       .design-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
       }
 
       .design-item {
         aspect-ratio: 4 / 3;
+        border-right: none;
+        border-bottom: 0.5px solid var(--border);
       }
 
-      .design-item:nth-child(odd) { border-right: 0.5px solid var(--border); }
+      .design-item:nth-child(odd) { border-right: none; }
       .design-item:nth-child(even) { border-right: none; }
+      .design-item:last-child { border-bottom: none; }
 
       .philosophy-body {
         padding: 3rem 1.5rem 4rem;
