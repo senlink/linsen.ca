@@ -576,6 +576,34 @@
       }
     }
     
+    /* ── KOI SLIDER ── */
+    .koi-slider {
+      position: absolute;
+      inset: 0;
+    }
+
+    .koi-slider img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: fadeSlide 15s infinite;
+    }
+
+    .koi-slider img:nth-child(1) { animation-delay: 0s; }
+    .koi-slider img:nth-child(2) { animation-delay: 5s; }
+    .koi-slider img:nth-child(3) { animation-delay: 10s; }
+
+    @keyframes fadeSlide {
+      0%   { opacity: 0; }
+      20%  { opacity: 1; }
+      33%  { opacity: 1; }
+      53%  { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
   </style>
 </head>
 <body>
@@ -616,7 +644,7 @@
 
     <div class="work-featured shade-a fade-in">
       <img src="N1.jpg" alt="Featured painting">
-      <span class="work-label"></span>
+      <span class="work-label">Ethereal</span>
     </div>
 
     <div class="works-grid">
@@ -652,20 +680,24 @@
 
     <div class="design-grid">
       <div class="design-item shade-b fade-in">
-        <!-- <img src="images/design-01.jpg" alt=""> -->
+        <img src="blazing.jpg" alt="">
         <span class="design-item-label">Identity</span>
       </div>
       <div class="design-item shade-a fade-in">
-        <!-- <img src="images/design-02.jpg" alt=""> -->
+        <div class="koi-slider">
+          <img src="KOI_LOGO_T.jpg" alt="">
+          <img src="KOI_LOGO_G.jpg" alt="">
+          <img src="KOI_LOGO_B.jpg" alt="">
+        </div>
         <span class="design-item-label">Logo</span>
       </div>
       <div class="design-item shade-c fade-in">
         <!-- <img src="images/design-03.jpg" alt=""> -->
-        <span class="design-item-label">Print</span>
+        <span class="design-item-label">UI/UX</span>
       </div>
       <div class="design-item shade-d fade-in">
         <!-- <img src="images/design-04.jpg" alt=""> -->
-        <span class="design-item-label">Type</span>
+        <span class="design-item-label">REDESIGN</span>
       </div>
     </div>
   </section>
@@ -748,7 +780,7 @@
 
      
       <div class="philosophy-quote fade-in" style="position:relative;overflow:hidden;padding:3rem 2rem;padding-left:4rem;min-height:320px;">
-        <div style="position:absolute;inset:0;background-image:url('qysd.jpg');background-size:cover;background-position:center;opacity:0.6;pointer-events:none;z-index:0;"></div>
+        <div style="position:absolute;inset:0;background-image:url('qysd.jpg');background-size:cover;background-position:center;opacity:0.4;pointer-events:none;z-index:0;"></div>
         <div style="position:absolute;top:0;left:0;bottom:0;width:216px;background:rgba(245,244,240,0.7);z-index:0;pointer-events:none;"></div>
         <span style="position:relative;z-index:1;">氣韻生動</span>
       </div>
