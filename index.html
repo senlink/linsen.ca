@@ -59,7 +59,8 @@
     }
 
     nav.scrolled {
-      background: var(--white);
+      background: rgba(245,244,240,0.85);
+      backdrop-filter: blur(8px);
       border-bottom: 0.5px solid var(--border);
     }
     nav.scrolled .nav-name {
@@ -608,6 +609,19 @@
       100%  { opacity: 0; }
     }
 
+    .hero-kanji rt {
+      font-size: 0.25em;
+      letter-spacing: 0;
+    }
+
+    .phil-text rt {
+      font-size: 0.5em;
+      letter-spacing: 0;
+    }
+    ruby {
+      font-family: var(--serif-cn);
+    }
+
   </style>
 </head>
 <body>
@@ -626,7 +640,9 @@
   <div class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="hero-kanji">間</div>
+      <div class="hero-kanji">
+        <ruby>間<rt>ま</rt></ruby>
+      </div>
       <div>
         <p class="hero-statement">Oil on canvas.<br>Form in space.<br><span class="subdued">The rest is noise.</span></p>
         <p class="hero-tagline">Form follows silence.</p>
@@ -698,11 +714,11 @@
       </div>
       <div class="design-item shade-c fade-in">
         <!-- <img src="images/design-03.jpg" alt=""> -->
-        <span class="design-item-label">UI/UX</span>
+        <span class="design-item-label">UI/UX coming</span>
       </div>
       <div class="design-item shade-d fade-in">
         <!-- <img src="images/design-04.jpg" alt=""> -->
-        <span class="design-item-label">REDESIGN</span>
+        <span class="design-item-label">REDESIGN coming</span>
       </div>
     </div>
   </section>
@@ -741,7 +757,7 @@
       <!-- shinai — text left, image right -->
       <div class="phil-row-right fade-in">
         <p class="phil-text">
-          Influenced by Zen aesthetics, wabi-sabi, and the Japanese concept of 間 (ma) — the meaningful pause between things. The space between the sword strokes. The silence between the notes.
+          Influenced by Zen aesthetics, wabi-sabi, and the Japanese concept of <ruby>間<rt>ま</rt></ruby> (ma) — the meaningful pause between things. The space between the sword strokes. The silence between the notes.
         </p>
         <div class="phil-img">
           <img src="shinai.jpg" alt="Shinai — 竹刀">
