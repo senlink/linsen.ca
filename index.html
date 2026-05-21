@@ -16,8 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="canonical" href="https://linsen.ca">
   
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Cormorant+Garamond:wght@300;400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Cormorant+Garamond:wght@300;400&family=DM+Mono:wght@300;400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
       --black: #0a0a0a;
@@ -29,7 +28,7 @@
       --border: rgba(0,0,0,0.10);
       --serif: 'EB Garamond', Georgia, serif;
       --serif-light: 'Cormorant Garamond', Georgia, serif;
-      --serif-cn: 'Songti SC', 'STSong', 'SimSun', serif;
+      --serif-cn: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
       --mono: 'DM Mono', monospace;
     }
 
@@ -59,7 +58,7 @@
     }
 
     nav.scrolled {
-      background: rgba(245,244,240,0.85);
+      background: rgba(245,244,240,0.88);
       backdrop-filter: blur(8px);
       border-bottom: 0.5px solid var(--border);
     }
@@ -128,14 +127,16 @@
     .hero-kanji {
       font-family: var(--serif-cn);
       font-size: 120px;
+      line-height: 1;
+      margin-top: 1.5rem;
       font-weight: 300;
       color: rgba(255,255,255,0.25);
       line-height: 1;
     }
 
     .hero-statement {
-      font-family: var(--serif);
-      font-size: 34px;
+      font-family: var(--serif-cn);
+      font-size: 42px;
       font-weight: 400;
       line-height: 1.6;
       color: rgba(255,255,255,0.92);
@@ -143,18 +144,38 @@
       padding-top: 1rem;
     }
 
-    .subdued {
-      color: rgba(255,255,255,0.55);
+    .hero-subdued {
+      color: rgba(255,255,255,0.68);
+       font-size: 28px;
       font-style: normal;
     }
 
     .hero-tagline {
       font-family: var(--serif);
-      font-size: 13px;
+      font-size: 14px;
       
       color: rgba(255,255,255,0.45);
       letter-spacing: 0.05em;
       margin-top: 2rem;
+    }
+
+    .hero-quote {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+      margin-top: 1.5rem;
+      max-width: 360px;
+    }
+
+    .hero-author {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.75rem;
+      text-transform: uppercase;
     }
 
     .hero-location {
@@ -177,7 +198,7 @@
       gap: 4rem;
       padding: 4rem;
       border-bottom: 0.5px solid var(--border);
-      align-items: start;
+      align-items: center;
     }
 
     .section-meta { display: flex; flex-direction: column; gap: 0.75rem; }
@@ -207,8 +228,9 @@
 
     .section-desc {
       font-family: var(--serif);
-      font-size: 16px;
-      line-height: 1.85;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.6;
       color: var(--gray-3);
       max-width: 480px;
       
@@ -493,8 +515,18 @@
       }
 
       .hero-statement {
-        font-size: 17px;
+        font-size: 22px;
         line-height: 1.5;
+      }
+
+      .hero-quote {
+        font-size: 13px;
+        max-width: 100%;
+        margin-top: 1rem;
+      }
+
+      .hero-author {
+        font-size: 9px;
       }
 
       .hero-tagline {
@@ -612,11 +644,15 @@
     .hero-kanji rt {
       font-size: 0.25em;
       letter-spacing: 0;
+      margin: 0;
+      padding: 0;
     }
 
     .phil-text rt {
       font-size: 0.5em;
       letter-spacing: 0;
+      margin: 0;
+      padding: 0;
     }
     ruby {
       font-family: var(--serif-cn);
@@ -632,7 +668,7 @@
     <ul class="nav-links">
       <li><a href="#painting">ART</a></li>
       <li><a href="#design">DESIGN</a></li>
-      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#philosophy">WAY</a></li>
     </ul>
   </nav>
 
@@ -641,11 +677,14 @@
     <div class="hero-bg"></div>
     <div class="hero-content">
       <div class="hero-kanji">
-        <ruby>間<rt>ま</rt></ruby>
+        間
       </div>
       <div>
-        <p class="hero-statement">Oil on canvas.<br>Form in space.<br><span class="subdued">The rest is noise.</span></p>
-        <p class="hero-tagline">Form follows silence.</p>
+        <p class="hero-statement">大音希聲&ensp;大象無形</p>
+        <p class="hero-subdued">The greatest form casts no shadow. </p>
+        <p class="hero-quote">I have nothing to say, and I am saying it.</p>
+        <p class="hero-author">— John Cage</p>
+        <!-- <p class="hero-tagline">Form follows silence.</p> -->
       </div>
     </div>
     <!-- <div class="hero-location">Calgary, Canada</div> -->
@@ -659,7 +698,7 @@
         <span class="section-kanji">色作</span>
         <span class="section-title">Painting</span>
       </div>
-      <p class="section-desc">Each canvas begins with removal. What remains is not a decision but a survival — the last image that refused to be erased.</p>
+      <p class="section-desc">Colour, the rhythm. Emotion, the form. Feeling, the only truth.</p>
     </div>
 
     <div class="work-featured shade-a fade-in">
@@ -695,7 +734,7 @@
         <span class="section-kanji">视觉</span>
         <span class="section-title">VISUAL DESIGN</span>
       </div>
-      <p class="section-desc">Reduction until only intent remains. Every element earns its place — or it does not exist.</p>
+      <p class="section-desc">What is removed defines what remains, earns place, or does not.</p>
     </div>
 
     <div class="design-grid">
@@ -728,8 +767,8 @@
     <div class="section-header fade-in">
       <div class="section-meta">
         <span class="section-num">03</span>
-        <span class="section-kanji">理念</span>
-        <span class="section-title">Philosophy</span>
+        <span class="section-kanji">踐行</span>
+        <span class="section-title">WAY</span>
       </div>
       <p class="section-desc">What I make is shaped by what I practice. Discipline is not a constraint — it is the only path to freedom.</p>
     </div>
@@ -803,7 +842,7 @@
       <div class="philosophy-quote fade-in" style="position:relative;overflow:hidden;padding:3rem 2rem;padding-left:4rem;min-height:320px;">
         <div style="position:absolute;inset:0;background-image:url('qysd.jpg');background-size:cover;background-position:center;opacity:0.4;pointer-events:none;z-index:0;"></div>
         <div style="position:absolute;top:0;left:0;bottom:0;width:216px;background:rgba(245,244,240,0.7);z-index:0;pointer-events:none;"></div>
-        <span style="position:relative;z-index:1;">氣韻生動</span>
+        <span style="position:relative;z-index:1;left:-1em;">「氣韻生動」</span>
       </div>
 
     </div>
