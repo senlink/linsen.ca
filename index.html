@@ -42,6 +42,11 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+    img {
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
 
     /* ── NAV ── */
     nav {
@@ -172,6 +177,7 @@
     .hero-author {
       font-family: var(--mono);
       font-size: 10px;
+      max-width: 80%;
       letter-spacing: 0.2em;
       color: rgba(255,255,255,0.35);
       margin-top: 0.75rem;
@@ -770,7 +776,7 @@
         <span class="section-kanji">踐行</span>
         <span class="section-title">WAY</span>
       </div>
-      <p class="section-desc">What I make is shaped by what I practice. Discipline is not a constraint — it is the only path to freedom.</p>
+      <p class="section-desc">To make is to understand. This is how I read the world.</p>
     </div>
 
     <div class="philosophy-body">
@@ -796,7 +802,7 @@
       <!-- shinai — text left, image right -->
       <div class="phil-row-right fade-in">
         <p class="phil-text">
-          Influenced by Zen aesthetics, wabi-sabi, and the Japanese concept of <ruby>間<rt>ま</rt></ruby> (ma) — the meaningful pause between things. The space between the sword strokes. The silence between the notes.
+          Zen aesthetics, wabi-sabi, <ruby>間<rt>ま</rt></ruby> (ma). The meaningful pause between things. The space between the sword strokes. The silence between the notes.
         </p>
         <div class="phil-img">
           <img src="shinai.jpg" alt="Shinai — 竹刀">
@@ -818,7 +824,7 @@
         </p>
       </div>
 
-      <!-- pillars -->
+      <!-- pillars 
       <div class="philosophy-pillars fade-in">
         <div class="pillar">
           <span class="pillar-name">Kendo</span>
@@ -837,6 +843,7 @@
           <span class="pillar-desc">If it needs explaining, it has already failed. Clarity is the only luxury.</span>
         </div>
       </div>
+      -->
 
      
       <div class="philosophy-quote fade-in" style="position:relative;overflow:hidden;padding:3rem 2rem;padding-left:4rem;min-height:320px;">
