@@ -327,14 +327,28 @@
 
     .design-item:hover img { transform: scale(1.02); }
 
+    .design-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,1);
+      mix-blend-mode: saturation;
+      transition: opacity 0.5s ease;
+      z-index: 1;
+    }
+
+    .design-item:hover::after {
+      opacity: 0;
+    }
+
     .design-item-label {
       font-family: var(--mono);
       font-size: 10px;
       letter-spacing: 0.15em;
-      color: var(--gray-3);
+      color: rgba(255,255,255,0.8);
       text-transform: uppercase;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     /* ── PHILOSOPHY — magazine layout ── */
